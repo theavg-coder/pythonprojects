@@ -1,0 +1,26 @@
+tasks = []
+
+def add_task(task):
+    tasks.append({"task": task, "completed": False})
+
+def view_tasks():
+    for idx, task in enumerate(tasks, 1):
+        status = "Done" if task["completed"] else "Not Done"
+        print(f"{idx}. {task['task']} - {status}")
+
+def mark_task_completed(task_number):
+    if 0 < task_number <= len(tasks):
+        tasks[task_number - 1]["completed"] = True
+
+def delete_task(task_number):
+    if 0 < task_number <= len(tasks):
+        tasks.pop(task_number - 1)
+
+# Example usage
+add_task("Learn Python")
+add_task("Build a project")
+view_tasks()
+mark_task_completed(1)
+view_tasks()
+delete_task(2)
+view_tasks()
